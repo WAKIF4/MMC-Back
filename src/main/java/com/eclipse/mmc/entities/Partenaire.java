@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "partenaire")
 public class Partenaire {
@@ -16,6 +18,8 @@ public class Partenaire {
     private @Getter @Setter String numTel;
     @Enumerated(EnumType.STRING)
     private @Getter @Setter TypePartenariat typePartenariat;
+    @ManyToMany(mappedBy="partenaireList")
+    private @Getter @Setter List<Event> eventList;
 
     public Partenaire(String nomEntreprise, String adresse, String numTel, TypePartenariat typePartenariat) {
         this.nomEntreprise = nomEntreprise;

@@ -23,6 +23,9 @@ public class Session {
     private @Setter @Getter String description;
     private @Setter @Getter OffsetTime heureDebut;
     private @Setter @Getter OffsetTime heureFin;
+    @ManyToOne
+    @JoinColumn(name = "event", referencedColumnName = "id")
+    private @Setter @Getter Event event;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)

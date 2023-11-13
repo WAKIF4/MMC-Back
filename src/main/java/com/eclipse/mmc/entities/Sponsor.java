@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "sponsor")
 public class Sponsor {
@@ -14,6 +16,8 @@ public class Sponsor {
     private @Getter @Setter String adresse;
     private @Getter @Setter String tel;
     private @Getter @Setter long montantSoutien;
+    @ManyToMany(mappedBy="sponsorList")
+    private @Getter @Setter List<Event> eventList;
 
     public Sponsor() {
     }
