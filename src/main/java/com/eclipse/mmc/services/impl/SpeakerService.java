@@ -1,4 +1,4 @@
-package com.eclipse.mmc.services;
+package com.eclipse.mmc.services.impl;
 
 import com.eclipse.mmc.entities.Speaker;
 import com.eclipse.mmc.exception.SpeakerNotFoundException;

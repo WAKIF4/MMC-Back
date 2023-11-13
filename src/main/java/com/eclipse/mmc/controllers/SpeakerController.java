@@ -1,7 +1,7 @@
 package com.eclipse.mmc.controllers;
 
 import com.eclipse.mmc.entities.Speaker;
-import com.eclipse.mmc.services.SpeakerService;
+import com.eclipse.mmc.services.impl.SpeakerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
