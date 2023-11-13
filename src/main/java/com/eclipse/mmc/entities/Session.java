@@ -32,9 +32,6 @@ public class Session {
     @JoinColumn(name = "categorie", referencedColumnName = "id")
     private @Setter @Getter Categorie categorie;
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinTable(name="speaker_session",joinColumns=@JoinColumn(name="session_id"),
-            inverseJoinColumns = @JoinColumn(name="speaker_id")
-    )
-    private @Setter @Getter List<Speaker> speakers;
+    @OneToMany(mappedBy ="session")
+    private @Setter @Getter List<Session_Speaker> session_speakers;
 }

@@ -39,7 +39,7 @@ public class SessionService implements ISessionService {
             s.setHeureDebut(session.getHeureDebut());
             s.setHeureFin(session.getHeureFin());
             s.setCategorie(session.getCategorie());
-            s.setSpeakers(session.getSpeakers());
+//            s.setSpeakers(session.getSpeakers());
 
             sessionRepository.save(s);
 
