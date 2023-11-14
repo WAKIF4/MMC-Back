@@ -1,5 +1,6 @@
 package com.eclipse.mmc.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,8 @@ public class Participant {
     private @Getter @Setter String prenom;
     private @Getter @Setter String email;
     private @Getter @Setter String ecole;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @JoinColumn(name = "event_id")
     private @Getter @Setter Event event;
 
