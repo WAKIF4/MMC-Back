@@ -12,8 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path="mmc/Session")
-
+@RequestMapping("mmc/Session")
 public class SessionController {
     @Autowired
     private ISessionService sessionService;

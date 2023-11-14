@@ -13,33 +13,38 @@ import java.util.Optional;
 public class SessionService implements ISessionService {
     @Autowired
     private ISessionRepository sessionRepository;
-    public Session addSession(Session session){
-        Session s=sessionRepository.save(session);
+
+    public Session addSession(Session session) {
+        Session s = sessionRepository.save(session);
         return s;
     }
 
-    public List<Session> getAll(){
-        List<Session>sessionList=sessionRepository.findAll();
+    @Override
+    public List<Session> getAll() {
+        List<Session> sessionList = sessionRepository.findAll();
         return sessionList;
     }
-    public Optional<Session> getById(Long id){
-        Optional<Session> session= sessionRepository.findById(id);
+
+    public Optional<Session> getById(Long id) {
+        Optional<Session> session = sessionRepository.findById(id);
         return session;
     }
-    public void deleteById(Long id){
+
+    public void deleteById(Long id) {
         sessionRepository.deleteById(id);
     }
-    public int update(Long id,Session session){
-        Optional<Session> old=sessionRepository.findById(id);
 
-        if(old.isPresent()){
-            Session s=old.get();
+    public int update(Long id, Session session) {
+        Optional<Session> old = sessionRepository.findById(id);
+
+        if (old.isPresent()) {
+            Session s = old.get();
             s.setTitre(session.getTitre());
             s.setDescription(session.getDescription());
             s.setHeureDebut(session.getHeureDebut());
             s.setHeureFin(session.getHeureFin());
             s.setCategorie(session.getCategorie());
-            s.setSpeakers(session.getSpeakers());
+
 
             sessionRepository.save(s);
 
@@ -47,7 +52,6 @@ public class SessionService implements ISessionService {
         }
         return -1;
     }
-
 
 
 }

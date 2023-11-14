@@ -1,6 +1,7 @@
 package com.eclipse.mmc.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,8 +27,9 @@ import java.util.List;
         private @Setter @Getter String lien;
         private @Setter @Getter boolean  isMCT;
         private @Setter @Getter boolean  isMVC;
-        @ManyToMany(mappedBy="speakers")
-        private List<Session> sessions;
+
+        @OneToMany(mappedBy="speaker")
+        private @Setter @Getter List<Session_Speaker> speaker_sessions;
 
     }
 
