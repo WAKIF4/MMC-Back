@@ -8,6 +8,9 @@ import com.eclipse.mmc.services.IEventParticipantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class EventParticipantService implements IEventParticipantService {
     @Autowired
@@ -23,5 +26,7 @@ public class EventParticipantService implements IEventParticipantService {
             return 0;
         }
     }
+
+
 
 }

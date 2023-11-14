@@ -2,6 +2,7 @@ package com.eclipse.mmc.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class Categorie {
 
 //    @JsonManagedReference
     @OneToMany(mappedBy = "categorie",fetch = FetchType.EAGER)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private @Getter @Setter List<Session>sessionList;
 
 
