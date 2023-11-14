@@ -2,6 +2,7 @@ package com.eclipse.mmc.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ import java.util.List;
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+        private @Getter Long id;
 
         private @Setter @Getter String firstName;
         private @Setter @Getter String lastName;
@@ -29,6 +30,7 @@ import java.util.List;
         private @Setter @Getter boolean  isMVC;
 
         @OneToMany(mappedBy="speaker")
+        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
         private @Setter @Getter List<Session_Speaker> speaker_sessions;
 
     }
