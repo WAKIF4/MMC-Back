@@ -31,7 +31,8 @@ public class Event {
     private List<Session>session;
 
     private @Setter @Getter Long nbdeplace;
-
+    @OneToMany(mappedBy = "event")
+    private @Getter @Setter List<Participant> participants;
 
     private @Setter @Getter List<String>imageList;
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
@@ -44,6 +45,7 @@ public class Event {
             inverseJoinColumns = @JoinColumn(name="partenaire_id")
     )
     private @Setter @Getter List<Partenaire>partenaireList;
+
 
     public Event(String nom, String image, String description, Date dateDebut, Date dateFin, TypeEvent typeEvent, Ville ville, String adresse, List<Session> session, Long nbdeplace, List<String> imageList, List<Sponsor> sponsorList) {
         this.nom = nom;
