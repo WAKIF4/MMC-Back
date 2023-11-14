@@ -23,6 +23,7 @@ public class Session {
     private @Setter @Getter String description;
     private @Setter @Getter OffsetTime heureDebut;
     private @Setter @Getter OffsetTime heureFin;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @JoinColumn(name = "event", referencedColumnName = "id")
