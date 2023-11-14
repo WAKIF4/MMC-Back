@@ -3,6 +3,7 @@ package com.eclipse.mmc.entities;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,7 +12,6 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
-
 
 public class Session {
 
@@ -23,18 +23,16 @@ public class Session {
     private @Setter @Getter String description;
     private @Setter @Getter OffsetTime heureDebut;
     private @Setter @Getter OffsetTime heureFin;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @JoinColumn(name = "event", referencedColumnName = "id")
     private @Setter @Getter Event event;
 
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @JoinColumn(name = "categorie", referencedColumnName = "id")
     private @Setter @Getter Categorie categorie;
-
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinTable(name="speaker_session",joinColumns=@JoinColumn(name="session_id"),
-            inverseJoinColumns = @JoinColumn(name="speaker_id")
-    )
-    private @Setter @Getter List<Speaker> speakers;
+    @OneToMany(mappedBy ="session")
+    private @Setter @Getter List<Session_Speaker> session_speakers;
 }

@@ -27,8 +27,8 @@ public class Event {
     private @Setter @Getter Ville ville;
 
     private @Setter @Getter String adresse;
-    @OneToMany(mappedBy = "event")
-    private List<Session>session;
+    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
+    private @Getter @Setter List<Session>session;
 
     private @Setter @Getter Long nbdeplace;
     @OneToMany(mappedBy = "event")
